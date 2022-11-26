@@ -3,7 +3,7 @@
 # Action: Set the `TOOLKIT` variable
 # Examples: arm, riscv, rh850, rl78, rx, stm8, 430, 8051, avr or v850
 # Alternative: override the default TOOLKIT_DIR (/path/to/installation/<arch>)
-set(TOOLKIT "C:/IAR_Systems/EW/430/7.21.1/430")
+set(TOOLKIT arm)
 
 # Get the toolchain target from the TOOLKIT
 get_filename_component(CMAKE_SYSTEM_PROCESSOR ${TOOLKIT} NAME)
