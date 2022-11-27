@@ -8,7 +8,7 @@ cmake_minimum_required(VERSION 3.22)
 #set(CMAKE_ASM_RESPONSE_FILE_FLAG "-f ")
 #set(CMAKE_ASM_RESPONSE_FILE_LINK_FLAG "-f ")
 
-set(CMAKE_NINJA_FORCE_RESPONSE_FILE 1)
+#set(CMAKE_NINJA_FORCE_RESPONSE_FILE 1)
 
 project(MEGA LANGUAGES C ASM )
 
@@ -47,6 +47,10 @@ file(WRITE ${CMAKE_CURRENT_SOURCE_DIR}/main.c "int main() {\n\treturn 0;\n}")
 file(GLOB c-sources ${PROJECT_SOURCE_DIR}/*.c)
 file(GLOB asm-sources ${PROJECT_SOURCE_DIR}/*.asm)
 add_executable(mega-project ${c-sources} ${asm-sources})
+
+foreach(d RANGE 1 ${NUMBERF})
+  target_compile_definitions(mega-project PRIVATE STUPIDLY_LONG_SYMBOL_STRING_${d}=${d})
+endforeach()
 
 # Set the compiler flags for the "mega-project" target
 target_compile_options(mega-project PRIVATE $<$<COMPILE_LANGUAGE:C>:-e>)
